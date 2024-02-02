@@ -8,90 +8,22 @@
     <!-- Add your css stylehseets or link -->
 </head>
 <body>
-    <div class="container-fluid">
-    <div class="row">
-
-        <!-- Left Side Navigation Menu -->
-        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Currency Converter 
-                        </a>
-                    </li>
-                    <!-- Add more navigation items as needed -->
-                    <li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                        City
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
-            <!-- Currency Converter Section -->
-            <section id="currency-converter">
-                <h2>Travo Currency App </h2>
-                <!-- Search Bar Section -->
-            <section id="search-bar">
-                <h6>Search</h6>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="btn">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="btn">Search</button>
-                    </div>
-                </div>
-            </section>
-                <!-- Add form elements for currency conversion -->
-                <form id="conversion-form">
-                    <label for="from-currency">From Currency:</label>
-                    <select id="from-currency" name="from-currency" class="form-control">
-                        <!-- Add options for different currencies -->
-                        <option value="usd">USD</option>
-                        <option value="eur">EUR</option>
-                        <!-- Add more options as needed -->
-                    </select>
-
-                    <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" class="form-control" required>
-
-                    <label for="to-currency">To Currency:</label>
-                    <select id="to-currency" name="to-currency" class="form-control">
-                        <!-- Add options for different currencies -->
-                        <option value="usd">USD</option>
-                        <option value="eur">EUR</option>
-                        <!-- Add more options as needed -->
-                    </select>
-
-                    <button type="submit" class="btn btn-primary">Convert</button>
-                </form>
-
-                <!-- Display the converted result -->
-                <div id="result">
-                    <p>Converted Result: <span id="converted-amount">0.00</span></p>
-                </div>
-            </section>
-
-        </main>
-    </div>
-</div>
-
-<!-- Link Bootstrap JS and Popper.js -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Add your own JavaScript files or scripts here -->
-
+    <header>
+        <h1>Travo Currency App</h1>
+    </header>
+    <main>
+        <!-- main goes here -->
+    <section id="currency-converter">
+        <h2>Currency Converter</h2>
+        <h3>test</h3>
+        <p></p>
+        <!-- Add form elements for currency conversion -->
+        <form id="conversion-form">
+            <label for="from-currency">From Currency:</label> 
+            <select id="from-currency" name="from-currency">
+</main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
    
