@@ -12,29 +12,38 @@
 
     <div class="container-fluid">
         <div class="row">
-
-            <!-- Left Side Navigation Menu -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Currency Converter
-                            </a>
-                        </li>
-                        <!-- Add more navigation items as needed -->
-                        </li>
-                    </ul>
+<!-- Left Side Navigation Menu -->
+<nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="currencyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Options
+                </a>
+                <div class="dropdown-menu" aria-labelledby="currencyDropdown">
+                    <a class="dropdown-item" href="#">Currency</a>
+                    <a class="dropdown-item" href="#">City</a>
+                    <!-- Add more dropdown options as needed -->
                 </div>
-            </nav>
+            </li>
+            <!-- Add more navigation items as needed -->
+        </ul>
+    </div>
+</nav>
+
             <!-- Main Content -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
+            <!-- Search Bar Section -->
+            <section id="search-bar">
+                <h2>Search Bar</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="btn">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="btn">Search</button>
+                    </div>
+                </div>
+            </section>
                 <!-- Currency Converter Section -->
                 <section id="currency-converter">
                     <h2>Currency Converter</h2>
@@ -59,17 +68,6 @@
                         </select>
                         <button type="submit" class="btn btn-primary">Convert</button>
                     </form>
-                        <!-- Search Bar Section -->
-                <section id="search-bar">
-                    <h2>Search Bar</h2>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="btn">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="btn">Search</button>
-                        </div>
-                    </div>
-                </section>
-
             </main>
         </div>
     </div>
