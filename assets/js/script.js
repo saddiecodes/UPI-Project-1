@@ -169,7 +169,7 @@ fetch(url)
     const conversionRates = {};
     for (const currency in exchangeRates) {
       if (currency !== baseCurrency) {
-        conversionRates[currency] = (exchangeRates[baseCurrency] / exchangeRates[currency]) * amount;
+        conversionRates[currency] = ( exchangeRates[currency] / exchangeRates[baseCurrency] ) * amount;
       }
     }
 
