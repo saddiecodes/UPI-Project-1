@@ -149,7 +149,7 @@ fetch(url)
     console.error(error);
   });
 
-  // const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
+//   const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
 // const apiKey = '01d3903e56654e9189a30b7fbb9d2a34';
 
 // // build the API URL with the API key
@@ -167,7 +167,7 @@ fetch(url)
 //     });
 
 //     // select a base currency and convert to other currencies
-//     const baseCurrency = 'GBP';
+//     const baseCurrency = 'TRY';
 //     const conversionRates = {};
 //     for (const currency in exchangeRates) {
 //       if (currency !== baseCurrency) {
@@ -183,27 +183,54 @@ fetch(url)
 //     console.error(error);
 //   });
 
-async function getCurrencyByCity(city) {
-  let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
-  let data = await response.json();
+// async function getCurrencyByCity(city) {
+//   let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
+//   let data = await response.json();
 
-  let currency = data.base;
-  let cities = Object.keys(data.rates);
+//   let currency = data.base;
+//   let cities = Object.keys(data.rates);
 
-  cities.forEach(function(cityName) {
-    if (cityName.toLowerCase().includes(city.toLowerCase())) {
-      currency = cityName;
-    }
-  });
+//   cities.forEach(function(cityName) {
+//     if (cityName.toLowerCase().includes(city.toLowerCase())) {
+//       currency = cityName;
+//     }
+//   });
 
-  if (currency === data.base) {
-    return "Unknown";
-  } else {
-    return currency;
-  }
-}
+//   if (currency === data.base) {
+//     return "Unknown";
+//   } else {
+//     return currency;
+//   }
+// }
 
-// Usage:
-let city = "London";
-let currency = await getCurrencyByCity(city);
-console.log(`The currency in ${city} is ${currency}.`);
+// // Usage:
+// let city = "London";
+// let currency = await getCurrencyByCity(city);
+// console.log(`The currency in ${city} is ${currency}.`);
+
+// async function getCurrencyByCity(city) {
+//   let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
+//   let data = await response.json();
+
+//   let currency = data.base;
+//   let cities = Object.keys(data.rates);
+
+//   cities.forEach(function(cityName) {
+//     if (cityName.toLowerCase().includes(city.toLowerCase())) {
+//       currency = cityName;
+//     }
+//   });
+
+//   if (currency === data.base) {
+//     return "Unknown";
+//   } else {
+//     return currency;
+//   }
+// }
+
+// // Usage:
+// (async () => {
+//   let city = "London";
+//   let currency = await getCurrencyByCity(city);
+//   console.log(`The currency in ${city} is ${currency}.`);
+// })();
