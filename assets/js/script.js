@@ -109,45 +109,45 @@
 //     console.error(error);
 //   });
 
-// POPUP MESSAGE with AMount the conversion rates to the console
-  const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
-const apiKey = '01d3903e56654e9189a30b7fbb9d2a34';
+// // POPUP MESSAGE with AMount the conversion rates to the console
+//   const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
+// const apiKey = '01d3903e56654e9189a30b7fbb9d2a34';
 
-// build the API URL with the API key
-const url = `${apiUrl}?apikey=${apiKey}`;
+// // build the API URL with the API key
+// const url = `${apiUrl}?apikey=${apiKey}`;
 
-// prompt the user to select a base currency
-const baseCurrency = prompt('Enter the base currency:');
+// // prompt the user to select a base currency
+// const baseCurrency = prompt('Enter the base currency:');
 
-// prompt the user to enter an amount
-const amount = parseFloat(prompt('Enter the amount to convert:'));
+// // prompt the user to enter an amount
+// const amount = parseFloat(prompt('Enter the amount to convert:'));
 
-// fetch the exchange rates from the API
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    // extract the list of available currencies and their rates
-    const currencies = Object.keys(data.rates);
-    const exchangeRates = {};
-    currencies.forEach(currency => {
-      exchangeRates[currency] = data.rates[currency];
-    });
+// // fetch the exchange rates from the API
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => {
+//     // extract the list of available currencies and their rates
+//     const currencies = Object.keys(data.rates);
+//     const exchangeRates = {};
+//     currencies.forEach(currency => {
+//       exchangeRates[currency] = data.rates[currency];
+//     });
 
-    // select the base currency and convert to other currencies
-    const conversionRates = {};
-    for (const currency in exchangeRates) {
-      if (currency !== baseCurrency) {
-        conversionRates[currency] = ( exchangeRates[currency] / exchangeRates[baseCurrency] ) * amount;
-      }
-    }
+//     // select the base currency and convert to other currencies
+//     const conversionRates = {};
+//     for (const currency in exchangeRates) {
+//       if (currency !== baseCurrency) {
+//         conversionRates[currency] = ( exchangeRates[currency] / exchangeRates[baseCurrency] ) * amount;
+//       }
+//     }
 
-    // log the conversion rates to the console
-    console.log(`Conversion rates from ${baseCurrency}:`, conversionRates);
-  })
-  .catch(error => {
-    // log any errors that occur during the API request
-    console.error(error);
-  });
+//     // log the conversion rates to the console
+//     console.log(`Conversion rates from ${baseCurrency}:`, conversionRates);
+//   })
+//   .catch(error => {
+//     // log any errors that occur during the API request
+//     console.error(error);
+//   });
 
 //   const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
 // const apiKey = '01d3903e56654e9189a30b7fbb9d2a34';
@@ -167,11 +167,11 @@ fetch(url)
 //     });
 
 //     // select a base currency and convert to other currencies
-//     const baseCurrency = 'TRY';
+//     const baseCurrency = 'GBP';
 //     const conversionRates = {};
 //     for (const currency in exchangeRates) {
 //       if (currency !== baseCurrency) {
-//         conversionRates[currency] = exchangeRates[baseCurrency] / exchangeRates[currency];
+//         conversionRates[currency] = exchangeRates[currency] / exchangeRates[baseCurrency];
 //       }
 //     }
 
@@ -183,58 +183,115 @@ fetch(url)
 //     console.error(error);
 //   });
 
-// async function getCurrencyByCity(city) {
-//   let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
-//   let data = await response.json();
 
-//   let currency = data.base;
-//   let cities = Object.keys(data.rates);
+// CODE BASED CURRENCY ENTRY
+// get elements by their ID
+const searchInput = document.getElementById('amount');
+const searchButton = document.getElementById('convertButton');
 
-//   cities.forEach(function(cityName) {
-//     if (cityName.toLowerCase().includes(city.toLowerCase())) {
-//       currency = cityName;
-//     }
-//   });
+// add event listener to the button
+searchButton.addEventListener('click', function() {
+  // get the search input value
+  const searchTerm = searchInput.value;
+  // do something with the search term (e.g. redirect to a search results page)
+  console.log(`Searching for "${searchTerm}"...`);
+});
 
-//   if (currency === data.base) {
-//     return "Unknown";
-//   } else {
-//     return currency;
-//   }
-// }
+// add event listener to the input (if you want to trigger the search on Enter keypress)
+searchInput.addEventListener('keyup', function(event) {
+  if (event.keyCode === 13) {
+    // simulate a button click to trigger the search
+    searchButton.click();
+  }
+});
 
-// // Usage:
-// let city = "London";
-// let currency = await getCurrencyByCity(city);
-// console.log(`The currency in ${city} is ${currency}.`);
+//  trigger
+  // same code as above but amount to be inserted into
+  const apiUrl = 'https://api.currencyfreaks.com/v2.0/rates/latest';
+const apiKey = '01d3903e56654e9189a30b7fbb9d2a34';
 
-// async function getCurrencyByCity(city) {
-//   let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
-//   let data = await response.json();
+// build the API URL with the API key
+const url = `${apiUrl}?apikey=${apiKey}`;
 
-//   let currency = data.base;
-//   let cities = Object.keys(data.rates);
+// Function to convert an amount to other currencies
+const convertAmount = (amount, baseCurrency, exchangeRates) => {
+  const convertedAmounts = {};
+  for (const currency in exchangeRates) {
+    if (currency !== baseCurrency) {
+      convertedAmounts[currency] = amount * exchangeRates[currency];
+    }
+  }
+  return convertedAmounts;
+};
 
-//   cities.forEach(function(cityName) {
-//     if (cityName.toLowerCase().includes(city.toLowerCase())) {
-//       currency = cityName;
-//     }
-//   });
+// Fetch the exchange rates from the API
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Extract the list of available currencies and their rates
+    const currencies = Object.keys(data.rates);
+    const exchangeRates = {};
+    currencies.forEach(currency => {
+      exchangeRates[currency] = data.rates[currency];
+    });
 
-//   if (currency === data.base) {
-//     return "Unknown";
-//   } else {
-//     return currency;
-//   }
-// }
+    // Select a base currency
+    const baseCurrency = 'GBP';
 
-// // Usage:
-// (async () => {
-//   let city = "London";
-//   let currency = await getCurrencyByCity(city);
-//   console.log(`The currency in ${city} is ${currency}.`);
-// })();
+    // Ask user for input amount
+    const inputAmount = (searchTerm = searchInput.value);
 
+    if (isNaN(inputAmount)) {
+      console.error('Invalid input. Please enter a valid number.');
+      return;
+    }
+
+    // Convert input amount to other currencies
+    const convertedAmounts = convertAmount(inputAmount, baseCurrency, exchangeRates);
+
+    // Log the converted amounts to the console
+    console.log(`Converted amounts from ${baseCurrency} (${inputAmount}):`, convertedAmounts);
+  })
+  .catch(error => {
+    // Log any errors that occur during the API request
+    console.error(error);
+  });
+``
+
+
+async function getCurrencyByCity(city) {
+    try {
+      let response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=cc985995f89f47518e07780d7f2250c2`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      let data = await response.json();
+  
+      let currency = data.base;
+      let cities = Object.keys(data.rates);
+  
+      cities.forEach(function (cityName) {
+        if (cityName.toLowerCase().includes(city.toLowerCase())) {
+          currency = cityName;
+        }
+      });
+  
+      return currency === data.base ? "Unknown" : currency;
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+      return "Unknown";
+    }
+  }
+  
+  // Usage:
+  (async () => {
+    let city = "London";
+    let currency = await getCurrencyByCity(city);
+    console.log(`The currency in ${city} is ${currency}.`);
+  })();
+  
 
 
 
