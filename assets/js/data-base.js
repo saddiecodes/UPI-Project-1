@@ -1,7 +1,9 @@
+<script>
+  // Your existing country data
+  const countriesData = [
 {
-  "error": false,
-  "msg": "countries and currencies retrieved",
-  "data": [
+  
+  
   {
   "name": "Bangladesh",
   "currency": "BDT",
@@ -1507,6 +1509,35 @@
   "currency": "MZN",
   "iso2": "MZ",
   "iso3": "MOZ"
-  }
-  ]
+  },
+  
+  // Add more country data as needed
+];
+
+// Function to populate country dropdown
+function populateCountryDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+
+  // Clear existing options
+  dropdown.innerHTML = "";
+
+  // Add default option
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.text = "Select Country";
+  dropdown.appendChild(defaultOption);
+
+  // Add options for each country
+  countriesData.forEach(country => {
+    const option = document.createElement("option");
+    option.value = country.iso3;
+    option.text = country.name;
+    dropdown.appendChild(option);
+  });
+}
+
+// Call the function to populate dropdowns
+populateCountryDropdown("from-country");
+populateCountryDropdown("to-country");
+</script>
   }

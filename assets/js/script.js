@@ -239,7 +239,7 @@ fetch(url)
     const baseCurrency = 'GBP';
 
     // Ask user for input amount
-    const inputAmount = (searchTerm = searchInput.value);
+    const inputAmount = (const searchTerm = searchInput.value);
 
     if (isNaN(inputAmount)) {
       console.error('Invalid input. Please enter a valid number.');
