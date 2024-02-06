@@ -1,0 +1,65 @@
+/* Body background color */
+body {
+    background-color: #E1F0DA;
+    height: 100%;
+   
+}
+
+/* Sidebar background color */
+.sidebar {
+    background-color: #D4E7C5;
+}
+
+main {
+    background-color: #B4D4FF;
+    height: 100%;
+    padding: 20px;
+}
+#currency-converter,
+#search-bar {
+    background-color: #B4D4FF;
+    padding: 20px; /* Add padding to sections for better readability */
+}
+body,
+h2,
+label {
+    color: #000000;
+}
+section {
+    background-color: #B4D4FF;
+    padding: 20px;
+}
+
+.dropdown-menu {
+    background-color: #B4D4FF;
+}
+.container-fluid {
+    background-color: #B4D4FF;
+}
+.btn {
+    background-color: #000000;
+}
+input,
+select {
+    background-color:  #E1F0DA;
+    color: #000000; /* Text color for input and select elements */
+    padding: 10px;
+    border-radius: 100px; /* Add some border-radius for a rounded look */
+}
+
+/* Enhance text styles */
+body,
+h2,
+label,
+.dropdown-item,
+.btn {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+}
+
+h2 {
+    color: #176B87; /* Change heading color to a more vibrant shade */
+}
+
+label {
+    font-size: 18px; /* Increase font size for labels */
+}
