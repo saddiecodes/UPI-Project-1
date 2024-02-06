@@ -48,6 +48,8 @@ select {
     border-radius: 100px; /* Add some border-radius for a rounded look */
 }
 
+/* Navbar */
+
 /* Enhance text styles */
 body,
 h2,
@@ -64,3 +66,13 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
+<<<<<<< HEAD
+=======
+img {
+    width: 200px;
+
+}
+footer {
+    text-align: center;
+}
+>>>>>>> b616bb54473b2da10a48f8ebb5f050fd2af638aa
