@@ -116,10 +116,7 @@ fetch(mapURL)
 //     zoom: 12
 //   });
 
-<<<<<<< HEAD
-//   map.addControl(L.mapquest.control());
-// }
-=======
+
   map.addControl(L.mapquest.control());
 }
  
@@ -157,4 +154,6 @@ fetch(mapURL)
 
      
 }
+
   }
+
