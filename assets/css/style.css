@@ -63,3 +63,10 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
+img {
+    width: 200px;
+
+}
+footer {
+    text-align: center;
+}
