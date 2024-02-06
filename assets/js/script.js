@@ -97,16 +97,16 @@ fetch(mapURL)
   map.addControl(L.mapquest.control());
 }
  
-// Function to search and convert using geocoding and currency converter APIs
+
+// export async function searchAndConvert() {
   async function searchAndConvert() {
-   // Input handling 
   const countryInput = document.getElementById('from-country').value;
   const currencySelect = document.getElementById('to-currency').value;
 
   // Geocoding API to get country location
   const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
-
+  // try {
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
@@ -135,6 +135,4 @@ fetch(mapURL)
 
      
 }
-
   }
-
