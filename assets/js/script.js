@@ -347,5 +347,10 @@ export async function searchAndConvert() {
               console.error('Error fetching from currency converter API:', currencyConverterError);
           }
 
-     
+      } else {
+        console.error('Error in MapQuest API:', mapsData.info.statuscode);
+      }
+  } catch (mapsError) {
+    console.error('Error fetching from MapQuest API:', mapsError);
+  }
 }
