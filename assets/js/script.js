@@ -315,3 +315,37 @@ window.onload = function() {
 
   map.addControl(L.mapquest.control());
 }
+ 
+
+export async function searchAndConvert() {
+  const countryInput = document.getElementById('from-country').value;
+  const currencySelect = document.getElementById('to-currency').value;
+
+  const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+  const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
+  try {
+      const mapsResponse = await fetch(mapsApiUrl);
+      const mapsData = await mapsResponse.json();
+
+      if (mapsData.status === 'OK') {
+          const countryLocation = mapsData.results[0].geometry.location;
+
+          const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
+          const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
+
+          try {
+              const currencyConverterResponse = await fetch(currencyConverterApiURL);
+              const currencyConverterData = await currencyConverterResponse.json();
+
+              if (currencyConverterData.status === 200) {
+                  const convertedAmount = currencyConverterData.rates[currencySelect];
+                  console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
+              } else {
+                  console.error('Error in currency converter API:', currencyConverterData.error.info);
+              }
+          } catch (currencyConverterError) {
+              console.error('Error fetching from currency converter API:', currencyConverterError);
+          }
+
+     
+}
