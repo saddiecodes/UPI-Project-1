@@ -40,6 +40,7 @@ section {
 .btn {
     background-color: #000000;
 }
+
 input,
 select {
     background-color:  #E1F0DA;
@@ -66,6 +67,8 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
+<<<<<<< HEAD
+=======
 img {
     width: 200px;
 
@@ -73,3 +76,4 @@ img {
 footer {
     text-align: center;
 }
+>>>>>>> b616bb54473b2da10a48f8ebb5f050fd2af638aa
