@@ -70,3 +70,7 @@ img {
 footer {
     text-align: center;
 }
+.navbar-image {
+    width: 100px;
+    height: auto;
+}
