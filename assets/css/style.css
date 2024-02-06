@@ -1,4 +1,4 @@
-/* Body background color */
+Body background color
 body {
     background-color: #E1F0DA;
     height: 100%;
@@ -18,7 +18,8 @@ main {
 #currency-converter,
 #search-bar {
     background-color: #B4D4FF;
-    padding: 20px; /* Add padding to sections for better readability */
+    padding: 20px; 
+    /* Add padding to sections for better readability */ 
 }
 body,
 h2,
