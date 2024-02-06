@@ -124,13 +124,14 @@ fetch(mapURL)
 }
  
 
-export async function searchAndConvert() {
+// export async function searchAndConvert() {
+  async function searchAndConvert() {
   const countryInput = document.getElementById('from-country').value;
   const currencySelect = document.getElementById('to-currency').value;
 
   const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
-  try {
+  // try {
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
@@ -156,4 +157,4 @@ export async function searchAndConvert() {
 
      
 }
->>>>>>> b616bb54473b2da10a48f8ebb5f050fd2af638aa
+  }
