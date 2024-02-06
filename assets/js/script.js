@@ -239,7 +239,7 @@ fetch(url)
     const baseCurrency = 'GBP';
 
     // Ask user for input amount
-    const inputAmount = (const searchTerm = searchInput.value);
+    // const inputAmount = (const searchTerm = searchInput.value);
 
     if (isNaN(inputAmount)) {
       console.error('Invalid input. Please enter a valid number.');
@@ -290,8 +290,24 @@ async function getCurrencyByCity(city) {
     let city = "London";
     let currency = await getCurrencyByCity(city);
     console.log(`The currency in ${city} is ${currency}.`);
+
+    displayMap(city);
   })();
   
+function displayMap(city) {
+  var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+  var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${city}&size=@2x`;
+  var mapEl = document.getElementById('map');
+
+
+fetch(mapURL)
+  .then(function (res) { 
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    mapEl.innerHTML=data
+})
 
 
 
@@ -303,15 +319,14 @@ async function getCurrencyByCity(city) {
 
 
 
+// window.onload = function() {
+//   L.mapquest.key = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
 
-window.onload = function() {
-  L.mapquest.key = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+//   var map = L.mapquest.map('map', {
+//     center: [37.7749, -122.4194],
+//     layers: L.mapquest.tileLayer('map'),
+//     zoom: 12
+//   });
 
-  var map = L.mapquest.map('map', {
-    center: [37.7749, -122.4194],
-    layers: L.mapquest.tileLayer('map'),
-    zoom: 12
-  });
-
-  map.addControl(L.mapquest.control());
-}
+//   map.addControl(L.mapquest.control());
+// }
