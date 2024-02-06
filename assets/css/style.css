@@ -47,6 +47,11 @@ select {
     border-radius: 100px; /* Add some border-radius for a rounded look */
 }
 
+/* Navbar */
+.navbar {
+    
+}
+
 /* Enhance text styles */
 body,
 h2,
