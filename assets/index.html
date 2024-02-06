@@ -19,6 +19,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
+        <!-- Travo logo -->
+        <img src="./images/Travo.png" alt="travo logo" class="navbar-image">
       <a class="navbar-brand" href="#">Travo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,17 +49,33 @@
 </section>
 
             <!-- Main Content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <!-- Search Bar Section -->
             <section id="search-bar">
-                <h2>Search Bar</h2>
+            <h2>Search Bar</h2>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="btn">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="btn">Search</button>
-                    </div>
+                 </div>
                 </div>
             </section>
+            <!-- Base currency additions --> 
+            <div>
+                <label for="baseCurrency">Base Currency:</label>
+                <input type="text" id="baseCurrency" placeholder="Enter base currency code (e.g., USD)">
+              </div>
+              <div>
+                <label for="targetCurrency">Target Currency:</label>
+                <input type="text" id="targetCurrency" placeholder="Enter target currency code (e.g., EUR)">
+              </div>
+              <div>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" placeholder="Enter amount">
+              </div>
+              <button onclick="convertCurrency()">Convert</button>
+              <div id="countryResult"></div>
+              <div id="result"></div>
                <!-- Country Dropdowns Section -->
                <section id="country-dropdowns">
                 <h2>Country Selection</h2>
