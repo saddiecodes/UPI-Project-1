@@ -45,7 +45,12 @@
   </nav>
 <section>
     <h2>Destination?</h2>
-    <div id="map" style="width: 75%; height: 530px;"></div>
+    <div id="img-map" style="width: 75%; height: 530px;"><img src="https://www.mapquestapi.com/staticmap/v5/map?key=7kDXGajoCA7GkLUIYeht2GziGKbBtRJx&center=${countryEl}&size=@2x" alt=""></div>
+    <!-- So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
+    something like this:
+    in js
+    var imgMap = document.getElementById("img-map") -->
+
 </section>
 
             <!-- Main Content -->
@@ -56,12 +61,12 @@
             </section>
             <!-- Base currency additions --> 
             <div>
-                <label for ="baseCurrency">Base Currency:</label>
+                <label for="baseCurrency">Base Currency:</label>
                 <input type="text" id="baseCurrency" placeholder="Enter base currency code (e.g., USD)">
               </div>
               
               <div>
-                <label id= "target"for="targetCurrency">Target Currency:</label>
+                <label id="target"for="targetCurrency">Target Currency:</label>
                 <input type="text" id ="targetCurrency" placeholder="Enter target currency code (e.g., EUR)">
               </div>
               
@@ -70,10 +75,14 @@
                 <input type="number" id ="amount" placeholder="Enter amount">
               </div>
               
-              <button id="Convert"onclick="convertCurrency()">Convert</button> 
+              <button id="Convert" onclick="convertCurrency()">Convert</button> 
               
               <div id="countryResult"></div>
               <div id="result"></div>
+              <!-- Previously used currencies -->
+              <
+              <h2>Previously Used Currencies:</h2>
+    <ul id="currencyList"></ul>
             </section>
             </main>
         </div>
