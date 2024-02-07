@@ -85,7 +85,7 @@ function displayMap() {
   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
   var mapEl = document.getElementById('map');
-
+console.log(mapURL);
 fetch(mapURL)
   .then(function (res) { 
     return res.json();
