@@ -67,8 +67,7 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
-<<<<<<< HEAD
-=======
+
 img {
     width: 200px;
 
@@ -76,4 +75,50 @@ img {
 footer {
     text-align: center;
 }
->>>>>>> b616bb54473b2da10a48f8ebb5f050fd2af638aa
+#map {
+    width: 500px;
+    height: 1000px;
+    margin: 0  auto;
+    position: relative;
+}
+/* Custom CSS for centering the currency converter */
+#baseCurrency {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#targetCurrency {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+#amount {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#convert {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#target {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
