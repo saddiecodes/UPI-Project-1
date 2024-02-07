@@ -239,8 +239,8 @@ fetch(url)
     const baseCurrency = 'GBP';
 
     // Ask user for input amount
-    const inputAmount = (const searchTerm = searchInput.value);
-
+    const searchTerm = searchInput.value;
+const inputAmount = parseFloat(searchTerm);
     if (isNaN(inputAmount)) {
       console.error('Invalid input. Please enter a valid number.');
       return;
