@@ -19,6 +19,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
+        <!-- Travo logo -->
+        <img src="./images/Travo.png" alt="travo logo" class="navbar-image">
       <a class="navbar-brand" href="#">Travo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,54 +49,32 @@
 </section>
 
             <!-- Main Content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <!-- Search Bar Section -->
-            <section id="search-bar">
-                <h2>Search Bar</h2>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="btn">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="btn">Search</button>
-                    </div>
+            <role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div>
+                 </div>
                 </div>
             </section>
-               <!-- Country Dropdowns Section -->
-               <section id="country-dropdowns">
-                <h2>Country Selection</h2>
-                <label for="from-country">From Country:</label>
-                <select id="from-country" name="from-country" class="form-control">
-                    <!-- Options will be dynamically added here -->
-                </select>
-
-                <label for="to-country">To Country:</label>
-                <select id="to-country" name="to-country" class="form-control">
-                    <!-- Options will be dynamically added here -->
-                </select>
+            <!-- Base currency additions --> 
+            <div>
+                <label for ="baseCurrency">Base Currency:</label>
+                <input type="text" id="baseCurrency" placeholder="Enter base currency code (e.g., USD)">
+              </div>
+              
+              <div>
+                <label id= "target"for="targetCurrency">Target Currency:</label>
+                <input type="text" id ="targetCurrency" placeholder="Enter target currency code (e.g., EUR)">
+              </div>
+              
+              <div>
+                <label for="amount">Amount:</label>
+                <input type="number" id ="amount" placeholder="Enter amount">
+              </div>
+              
+              <button id="Convert"onclick="convertCurrency()">Convert</button> 
+              
+              <div id="countryResult"></div>
+              <div id="result"></div>
             </section>
-                <!-- Currency Converter Section -->
-                <section id="currency-converter">
-                    <h2>Travo Currency Converter</h2>
-                    <!-- Add form elements for currency conversion -->
-                    <form id="conversion-form">
-                        <label for="from-currency">From Currency:</label>
-                        <select id="from-currency" name="from-currency" class="form-control">
-                            <!-- Add options for different currencies -->
-                            <option value="usd">USD</option>
-                            <option value="eur">EUR</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                        <label for="amount">Amount:</label>
-                        <input type="number" id="amount" name="amount" class="form-control" required>
-
-                        <label for="to-currency">To Currency:</label>
-                        <select id="to-currency" name="to-currency" class="form-control">
-                            <!-- Add options for different currencies -->
-                            <option value="usd">USD</option>
-                            <option value="eur">EUR</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                        <button type="submit" id="convertButton" class="btn btn-primary">Convert</button>
-                    </form>
             </main>
         </div>
     </div>

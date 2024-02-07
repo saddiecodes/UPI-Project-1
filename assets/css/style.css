@@ -1,4 +1,4 @@
-/* Body background color */
+Body background color
 body {
     background-color: #E1F0DA;
     height: 100%;
@@ -18,7 +18,8 @@ main {
 #currency-converter,
 #search-bar {
     background-color: #B4D4FF;
-    padding: 20px; /* Add padding to sections for better readability */
+    padding: 20px; 
+    /* Add padding to sections for better readability */ 
 }
 body,
 h2,
@@ -39,6 +40,7 @@ section {
 .btn {
     background-color: #000000;
 }
+
 input,
 select {
     background-color:  #E1F0DA;
@@ -48,9 +50,6 @@ select {
 }
 
 /* Navbar */
-.navbar {
-    
-}
 
 /* Enhance text styles */
 body,
@@ -68,6 +67,7 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
+
 img {
     width: 200px;
 
@@ -75,3 +75,50 @@ img {
 footer {
     text-align: center;
 }
+#map {
+    width: 500px;
+    height: 1000px;
+    margin: 0  auto;
+    position: relative;
+}
+/* Custom CSS for centering the currency converter */
+#baseCurrency {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#targetCurrency {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+#amount {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#convert {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#target {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
