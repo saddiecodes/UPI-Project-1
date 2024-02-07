@@ -81,6 +81,13 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
 function displayMap() {
 
     // Map display logic
+
+//     So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
+// something like this:
+// in js
+
+  var imgMap = document.getElementById("img-map")
+
   var countryEl = document.getElementById('countryResult')
   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
