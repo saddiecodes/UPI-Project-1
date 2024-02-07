@@ -42,29 +42,27 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
     }
   }
 
-    // Function to convert currency based on user input
- 
-  async function convertCurrency() {
-    
+ // Function to convert currency based on user input
+async function convertCurrency() {
     // Retrieving user input
     const baseCurrency = document.getElementById('baseCurrency').value.toUpperCase();
     const targetCurrency = document.getElementById('targetCurrency').value.toUpperCase();
     const amount = parseFloat(document.getElementById('amount').value);
-
+  
     // Validating input
     if (!baseCurrency || !targetCurrency || isNaN(amount)) {
       alert('Please enter valid input.');
       return;
     }
-
+  
     const countryName = await fetchCurrencyData(targetCurrency);
-
+  
     // Displaying country name and performing currency conversion
     if (countryName !== null) {
       document.getElementById('countryResult').innerText = `Country: ${countryName}`;
-      
+  
       const exchangeRate = await getExchangeRate(baseCurrency, targetCurrency);
-      
+  
       if (exchangeRate !== null) {
         const convertedAmount = (amount * exchangeRate).toFixed(2);
         document.getElementById('result').innerText = `${amount} ${baseCurrency} is equal to ${convertedAmount} ${targetCurrency}`;
@@ -74,7 +72,29 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
     } else {
       alert('Failed to fetch country name. Please check the target currency code and try again.');
     }
-  }
+  
+// Store the used currencies in localStorage
+const usedCurrencies = JSON.parse(localStorage.getItem('usedCurrencies')) || [];
+if (!usedCurrencies.includes(targetCurrency)) {
+  usedCurrencies.push(targetCurrency);
+  localStorage.setItem('usedCurrencies', JSON.stringify(usedCurrencies));
+}
+
+// Display previously used currencies
+const currencyList = document.getElementById('currencyList');
+if (currencyList) {
+  currencyList.innerHTML = '';
+  usedCurrencies.forEach(currency => {
+    const li = document.createElement('li');
+    li.textContent = currency;
+    currencyList.appendChild(li);
+  });
+}
+}
+  
+    
+
+  
   
 
   // Function to display a map based on country result
@@ -138,3 +158,4 @@ fetch(mapURL)
 
   }
 
+  
