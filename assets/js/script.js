@@ -42,6 +42,8 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
     }
   }
 
+    // Ask user for input amount
+    // const inputAmount = (const searchTerm = searchInput.value);
   async function convertCurrency() {
     const baseCurrency = document.getElementById('baseCurrency').value.toUpperCase();
     const targetCurrency = document.getElementById('targetCurrency').value.toUpperCase();
@@ -69,6 +71,31 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
       alert('Failed to fetch country name. Please check the target currency code and try again.');
     }
   }
+  
+  // Usage:
+  // (async () => {
+  //   let city = "London";
+  //   let currency = await getCurrencyByCity(city);
+  //   console.log(`The currency in ${city} is ${currency}.`);
+
+  //   displayMap(city);
+  // })();
+  
+function displayMap() {
+  var countryEl = document.getElementById('countryResult')
+  var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+  var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+  var mapEl = document.getElementById('map');
+
+
+fetch(mapURL)
+  .then(function (res) { 
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    mapEl.innerHTML=data
+})
 
 
 
@@ -76,14 +103,19 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
 
 
 
-window.onload = function() {
-  L.mapquest.key = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
 
-  var map = L.mapquest.map('map', {
-    center: [37.7749, -122.4194],
-    layers: L.mapquest.tileLayer('map'),
-    zoom: 12
-  });
+
+
+
+// window.onload = function() {
+//   L.mapquest.key = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+
+//   var map = L.mapquest.map('map', {
+//     center: [37.7749, -122.4194],
+//     layers: L.mapquest.tileLayer('map'),
+//     zoom: 12
+//   });
+
 
   map.addControl(L.mapquest.control());
 }
@@ -122,4 +154,6 @@ window.onload = function() {
 
      
 }
+
   }
+

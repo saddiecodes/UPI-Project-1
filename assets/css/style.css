@@ -40,6 +40,7 @@ section {
 .btn {
     background-color: #000000;
 }
+
 input,
 select {
     background-color:  #E1F0DA;
@@ -66,6 +67,7 @@ h2 {
 label {
     font-size: 18px; /* Increase font size for labels */
 }
+
 img {
     width: 200px;
 
