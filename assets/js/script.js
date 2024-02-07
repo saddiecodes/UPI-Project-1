@@ -35,12 +35,12 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
         return data[0].name.common;
       } else {
         throw new Error(`Country not found for currency code ${currencyCode}`);
-      }
-    } catch (error) {
-      console.error(error.message);
-      return null;
     }
-  }
+} catch (error) {
+  console.error(error.message);
+  return null;
+}
+}
 
  // Function to convert currency based on user input
 async function convertCurrency() {
@@ -97,7 +97,7 @@ if (currencyList) {
   
   
 
-  // Function to display a map based on country result
+// Function to display a map based on country result
 function displayMap() {
 
     // Map display logic
@@ -114,14 +114,14 @@ function displayMap() {
   var mapEl = document.getElementById('map');
 console.log(mapURL);
 fetch(mapURL)
-  .then(function (res) { 
-    return res.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    mapEl.innerHTML=data
+.then(function (res) { 
+return res.json();
 })
-  map.addControl(L.mapquest.control());
+.then(function (data) {
+console.log(data);
+mapEl.innerHTML=data
+})
+map.addControl(L.mapquest.control());
 }
  
 
@@ -137,28 +137,28 @@ fetch(mapURL)
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
-        // Checking geocoding API response status
-      if (mapsData.status === 'OK') {
-          const countryLocation = mapsData.results[0].geometry.location;
+    // Checking geocoding API response status
+  if (mapsData.status === 'OK') {
+      const countryLocation = mapsData.results[0].geometry.location;
 
-          // Currency converter API to get conversion rates
-          const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
-          const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
+      // Currency converter API to get conversion rates
+      const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
+      const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
 
-          try {
-              const currencyConverterResponse = await fetch(currencyConverterApiURL);
-              const currencyConverterData = await currencyConverterResponse.json();
+      try {
+          const currencyConverterResponse = await fetch(currencyConverterApiURL);
+          const currencyConverterData = await currencyConverterResponse.json();
 
-                // Checking currency converter API response status
-              if (currencyConverterData.status === 200) {
-                  const convertedAmount = currencyConverterData.rates[currencySelect];
-                  console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
-              } else {
-                  console.error('Error in currency converter API:', currencyConverterData.error.info);
-              }
-          } catch (currencyConverterError) {
-              console.error('Error fetching from currency converter API:', currencyConverterError);
+            // Checking currency converter API response status
+          if (currencyConverterData.status === 200) {
+              const convertedAmount = currencyConverterData.rates[currencySelect];
+              console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
+          } else {
+              console.error('Error in currency converter API:', currencyConverterData.error.info);
           }
+      } catch (currencyConverterError) {
+          console.error('Error fetching from currency converter API:', currencyConverterError);
+      }
 
      
 }
