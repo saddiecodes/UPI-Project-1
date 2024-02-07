@@ -101,11 +101,18 @@ if (currencyList) {
 function displayMap() {
 
     // Map display logic
+
+//     So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
+// something like this:
+// in js
+
+  var imgMap = document.getElementById("img-map")
+
   var countryEl = document.getElementById('countryResult')
   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
   var mapEl = document.getElementById('map');
-
+console.log(mapURL);
 fetch(mapURL)
   .then(function (res) { 
     return res.json();
@@ -117,16 +124,16 @@ fetch(mapURL)
   map.addControl(L.mapquest.control());
 }
  
-// Function to search and convert using geocoding and currency converter APIs
+
+// export async function searchAndConvert() {
   async function searchAndConvert() {
-   // Input handling 
   const countryInput = document.getElementById('from-country').value;
   const currencySelect = document.getElementById('to-currency').value;
 
   // Geocoding API to get country location
   const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
-
+  // try {
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
@@ -155,7 +162,4 @@ fetch(mapURL)
 
      
 }
-
   }
-
-  
