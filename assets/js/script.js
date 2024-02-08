@@ -35,34 +35,36 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
         return data[0].name.common;
       } else {
         throw new Error(`Country not found for currency code ${currencyCode}`);
+              }
+    } catch (error) {
+      console.error(error.message);
+      return null;
     }
-} catch (error) {
-  console.error(error.message);
-  return null;
-}
-}
+  }
 
- // Function to convert currency based on user input
-async function convertCurrency() {
+    // Function to convert currency based on user input
+ 
+  async function convertCurrency() {
+    
     // Retrieving user input
     const baseCurrency = document.getElementById('baseCurrency').value.toUpperCase();
     const targetCurrency = document.getElementById('targetCurrency').value.toUpperCase();
     const amount = parseFloat(document.getElementById('amount').value);
-  
+
     // Validating input
     if (!baseCurrency || !targetCurrency || isNaN(amount)) {
       alert('Please enter valid input.');
       return;
     }
-  
+
     const countryName = await fetchCurrencyData(targetCurrency);
-  
+
     // Displaying country name and performing currency conversion
     if (countryName !== null) {
       document.getElementById('countryResult').innerText = `Country: ${countryName}`;
-  
+      
       const exchangeRate = await getExchangeRate(baseCurrency, targetCurrency);
-  
+      
       if (exchangeRate !== null) {
         const convertedAmount = (amount * exchangeRate).toFixed(2);
         document.getElementById('result').innerText = `${amount} ${baseCurrency} is equal to ${convertedAmount} ${targetCurrency}`;
@@ -72,94 +74,70 @@ async function convertCurrency() {
     } else {
       alert('Failed to fetch country name. Please check the target currency code and try again.');
     }
-  
-// Store the used currencies in localStorage
-const usedCurrencies = JSON.parse(localStorage.getItem('usedCurrencies')) || [];
-if (!usedCurrencies.includes(targetCurrency)) {
-  usedCurrencies.push(targetCurrency);
-  localStorage.setItem('usedCurrencies', JSON.stringify(usedCurrencies));
-}
-
-// Display previously used currencies
-const currencyList = document.getElementById('currencyList');
-if (currencyList) {
-  currencyList.innerHTML = '';
-  usedCurrencies.forEach(currency => {
-    const li = document.createElement('li');
-    li.textContent = currency;
-    currencyList.appendChild(li);
-  });
-}
-}
-  
-    
-
-  
+  }
   
 
-// Function to display a map based on country result
+  // Function to display a map based on country result
 function displayMap() {
 
     // Map display logic
-
-//     So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
-// something like this:
-// in js
-
-  var imgMap = document.getElementById("img-map")
-
   var countryEl = document.getElementById('countryResult')
   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
   var mapEl = document.getElementById('map');
-console.log(mapURL);
+
 fetch(mapURL)
-.then(function (res) { 
-return res.json();
+  .then(function (res) { 
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    mapEl.innerHTML=data
 })
-.then(function (data) {
-console.log(data);
-mapEl.innerHTML=data
-})
-map.addControl(L.mapquest.control());
+  map.addControl(L.mapquest.control());
 }
  
-
-// export async function searchAndConvert() {
+// Function to search and convert using geocoding and currency converter APIs
   async function searchAndConvert() {
+   // Input handling 
   const countryInput = document.getElementById('from-country').value;
   const currencySelect = document.getElementById('to-currency').value;
 
   // Geocoding API to get country location
   const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
-  // try {
+try {
+
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
-    // Checking geocoding API response status
-  if (mapsData.status === 'OK') {
-      const countryLocation = mapsData.results[0].geometry.location;
+        // Checking geocoding API response status
+      if (mapsData.status === 'OK') {
+          const countryLocation = mapsData.results[0].geometry.location;
 
-      // Currency converter API to get conversion rates
-      const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
-      const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
+          // Currency converter API to get conversion rates
+          const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
+          const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
 
-      try {
-          const currencyConverterResponse = await fetch(currencyConverterApiURL);
-          const currencyConverterData = await currencyConverterResponse.json();
+          try {
+              const currencyConverterResponse = await fetch(currencyConverterApiURL);
+              const currencyConverterData = await currencyConverterResponse.json();
 
-            // Checking currency converter API response status
-          if (currencyConverterData.status === 200) {
-              const convertedAmount = currencyConverterData.rates[currencySelect];
-              console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
-          } else {
-              console.error('Error in currency converter API:', currencyConverterData.error.info);
+                // Checking currency converter API response status
+              if (currencyConverterData.status === 200) {
+                  const convertedAmount = currencyConverterData.rates[currencySelect];
+                  console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
+              } else {
+                  console.error('Error in currency converter API:', currencyConverterData.error.info);
+              }
+          } catch (currencyConverterError) {
+              console.error('Error fetching from currency converter API:', currencyConverterError);
           }
-      } catch (currencyConverterError) {
-          console.error('Error fetching from currency converter API:', currencyConverterError);
-      }
 
-     
-}
+      } else {
+        console.error('Error in MapQuest API:', mapsData.info.statuscode);
+      }
+  } catch (mapsError) {
+    console.error('Error fetching from MapQuest API:', mapsError);
   }
+}
