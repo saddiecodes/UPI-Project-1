@@ -75,12 +75,26 @@ img {
 footer {
     text-align: center;
 }
-#img-map {
-    width: 500px ;
-    height: 1000px ;
-    margin: 0  auto ;
-    position: relative;
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height if needed */
 }
+
+#img-map {
+    width: 75%;
+    max-width: 800px; /* Adjust the max-width as needed */
+    height: 530px;
+}
+
+#img-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the map image covers the container */
+}
+
+
 /* Custom CSS for centering the currency converter */
 #baseCurrency {
     text-align: center;
