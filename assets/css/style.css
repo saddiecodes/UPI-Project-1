@@ -2,14 +2,11 @@ Body background color
 body {
     background-color: #E1F0DA;
     height: 100%;
-   
 }
-
 /* Sidebar background color */
 .sidebar {
     background-color: #D4E7C5;
 }
-
 main {
     background-color: #B4D4FF;
     height: 100%;
@@ -18,8 +15,8 @@ main {
 #currency-converter,
 #search-bar {
     background-color: #B4D4FF;
-    padding: 20px; 
-    /* Add padding to sections for better readability */ 
+    padding: 20px;
+    /* Add padding to sections for better readability */
 }
 body,
 h2,
@@ -30,7 +27,6 @@ section {
     background-color: #B4D4FF;
     padding: 20px;
 }
-
 .dropdown-menu {
     background-color: #B4D4FF;
 }
@@ -40,7 +36,6 @@ section {
 .btn {
     background-color: #000000;
 }
-
 input,
 select {
     background-color:  #E1F0DA;
@@ -48,68 +43,73 @@ select {
     padding: 10px;
     border-radius: 100px; /* Add some border-radius for a rounded look */
 }
-
 /* Navbar */
-
 /* Enhance text styles */
 body,
 h2,
 label,
 .dropdown-item,
 .btn {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 h2 {
     color: #176B87; /* Change heading color to a more vibrant shade */
 }
-
 label {
     font-size: 18px; /* Increase font size for labels */
 }
-
 img {
     width: 200px;
-
 }
 footer {
     text-align: center;
 }
-#img-map {
-    width: 500px ;
-    height: 1000px ;
-    margin: 0  auto ;
-    position: relative;
-}
-/* Custom CSS for centering the currency converter */
-#baseCurrency {
-    text-align: center;
-    margin: 0 auto;
+.map-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* Adjust the height if needed */
 }
+#img-map {
+    width: 75%;
+    max-width: 800px; /* Adjust the max-width as needed */
+    height: 530px;
+}
+#img-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the map image covers the container */
+}
+/* Custom CSS for centering the currency converter */
+.input-container {
+    text-align: center;
+  }
+  .input-container label,
+  .input-container input {
+    display: block;
+    margin: 0 auto;
+  }
 #targetCurrency {
     text-align: center;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}  
-#amount {
-    text-align: center;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+.input-container {
+    text-align: center;
+  }
+  .input-container label,
+  .input-container input {
+    display: block;
+    margin: 0 auto;
+  }
 #convert {
     text-align: center;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 #target {
     text-align: center;
@@ -118,6 +118,10 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
 
 
 
