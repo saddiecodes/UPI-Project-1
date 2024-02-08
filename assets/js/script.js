@@ -35,34 +35,36 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
         return data[0].name.common;
       } else {
         throw new Error(`Country not found for currency code ${currencyCode}`);
+              }
+    } catch (error) {
+      console.error(error.message);
+      return null;
     }
-} catch (error) {
-  console.error(error.message);
-  return null;
-}
-}
+  }
 
- // Function to convert currency based on user input
-async function convertCurrency() {
+    // Function to convert currency based on user input
+ 
+  async function convertCurrency() {
+    
     // Retrieving user input
     const baseCurrency = document.getElementById('baseCurrency').value.toUpperCase();
     const targetCurrency = document.getElementById('targetCurrency').value.toUpperCase();
     const amount = parseFloat(document.getElementById('amount').value);
-  
+
     // Validating input
     if (!baseCurrency || !targetCurrency || isNaN(amount)) {
       alert('Please enter valid input.');
       return;
     }
-  
+
     const countryName = await fetchCurrencyData(targetCurrency);
-  
+
     // Displaying country name and performing currency conversion
     if (countryName !== null) {
       document.getElementById('countryResult').innerText = `Country: ${countryName}`;
-  
+      
       const exchangeRate = await getExchangeRate(baseCurrency, targetCurrency);
-  
+      
       if (exchangeRate !== null) {
         const convertedAmount = (amount * exchangeRate).toFixed(2);
         document.getElementById('result').innerText = `${amount} ${baseCurrency} is equal to ${convertedAmount} ${targetCurrency}`;
@@ -72,6 +74,7 @@ async function convertCurrency() {
     } else {
       alert('Failed to fetch country name. Please check the target currency code and try again.');
     }
+
   
 // Store the used currencies in localStorage
 const usedCurrencies = JSON.parse(localStorage.getItem('usedCurrencies')) || [];
@@ -163,8 +166,13 @@ document.addEventListener('DOMContentLoaded', function() {
       displayMap(); // Call the displayMap function when the button is clicked
   });
 
+
+  }
+
   
 });
+
+
 
 function displayMap() {
   var imgMap = document.getElementById("img-map");
@@ -172,8 +180,26 @@ function displayMap() {
   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx'; // Replace with your MapQuest API key
   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryName}&size=@2x`;
 
+
   // Set the src attribute of the img element to the map URL
   imgMap.src = mapURL;
+
+    // Map display logic
+  var countryEl = document.getElementById('countryResult')
+  var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+  var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+  var mapEl = document.getElementById('map');
+
+fetch(mapURL)
+  .then(function (res) { 
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    mapEl.innerHTML=data
+})
+  map.addControl(L.mapquest.control());
+
 }
 
 // Function to display a map based on country result
@@ -215,6 +241,7 @@ function displayMap() {
 // }
 
  
+
 // fetch(mapURL, {cache: 'reload', mode: 'no-cors'})
 // //The following function will update the cache and reload your image everywhere in your page:
 
@@ -226,40 +253,49 @@ function displayMap() {
 
 
 // export async function searchAndConvert() {
+
+// Function to search and convert using geocoding and currency converter APIs
+
   async function searchAndConvert() {
+   // Input handling 
   const countryInput = document.getElementById('from-country').value;
   const currencySelect = document.getElementById('to-currency').value;
 
   // Geocoding API to get country location
   const mapsApiKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
   const mapsApiUrl = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapsApiKey}&location=${countryInput}`;
-  // try {
+try {
+
       const mapsResponse = await fetch(mapsApiUrl);
       const mapsData = await mapsResponse.json();
 
-    // Checking geocoding API response status
-  if (mapsData.status === 'OK') {
-      const countryLocation = mapsData.results[0].geometry.location;
+        // Checking geocoding API response status
+      if (mapsData.status === 'OK') {
+          const countryLocation = mapsData.results[0].geometry.location;
 
-      // Currency converter API to get conversion rates
-      const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
-      const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
+          // Currency converter API to get conversion rates
+          const currencyConverterApiKey = '01d3903e56654e9189a30b7fbb9d2a34';
+          const currencyConverterApiURL = `https://api.currencyfreaks.com/v2.0/rates/latest?from=${countryLocation.lat},${countryLocation.lng}&to=${currencySelect}&apikey=${currencyConverterApiKey}`;
 
-      try {
-          const currencyConverterResponse = await fetch(currencyConverterApiURL);
-          const currencyConverterData = await currencyConverterResponse.json();
+          try {
+              const currencyConverterResponse = await fetch(currencyConverterApiURL);
+              const currencyConverterData = await currencyConverterResponse.json();
 
-            // Checking currency converter API response status
-          if (currencyConverterData.status === 200) {
-              const convertedAmount = currencyConverterData.rates[currencySelect];
-              console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
-          } else {
-              console.error('Error in currency converter API:', currencyConverterData.error.info);
+                // Checking currency converter API response status
+              if (currencyConverterData.status === 200) {
+                  const convertedAmount = currencyConverterData.rates[currencySelect];
+                  console.log(`Converted amount for ${countryInput} to ${currencySelect}: ${convertedAmount}`);
+              } else {
+                  console.error('Error in currency converter API:', currencyConverterData.error.info);
+              }
+          } catch (currencyConverterError) {
+              console.error('Error fetching from currency converter API:', currencyConverterError);
           }
-      } catch (currencyConverterError) {
-          console.error('Error fetching from currency converter API:', currencyConverterError);
-      }
 
-     
-}
+      } else {
+        console.error('Error in MapQuest API:', mapsData.info.statuscode);
+      }
+  } catch (mapsError) {
+    console.error('Error fetching from MapQuest API:', mapsError);
   }
+}

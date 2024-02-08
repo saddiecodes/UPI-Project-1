@@ -47,6 +47,7 @@
             <img src="https://www.mapquestapi.com/staticmap/v5/map?key=7kDXGajoCA7GkLUIYeht2GziGKbBtRJx&center=${countryEl}&size=@2x" alt="">
         </div>
     </div>
+
       <!-- So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
       something like this:
       in js
@@ -63,6 +64,26 @@
                   <label for="baseCurrency">Base Currency:</label>
                   <input type="text" id="baseCurrency" placeholder="Enter base currency code (e.g., USD)">
                 </div>
+=======
+  </nav>
+<section>
+    <h2>Destination?</h2>
+    <div class="map-container">
+      <div id="img-map">
+          <img src="https://www.mapquestapi.com/staticmap/v5/map?key=7kDXGajoCA7GkLUIYeht2GziGKbBtRJx&center=${countryEl}&size=@2x" alt="">
+      </div>
+  </div>
+  
+    <!-- So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
+    something like this:
+    in js
+    var imgMap = document.getElementById("img-map") -->
+
+</section>
+
+            <!-- Main Content -->
+            <role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
                 <div>
                   <label id="target"for="targetCurrency">Target Currency:</label>
                   <input type="text" id ="targetCurrency" placeholder="Enter target currency code (e.g., EUR)">
