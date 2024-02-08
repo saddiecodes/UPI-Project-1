@@ -74,11 +74,115 @@ async function getExchangeRate(baseCurrency, targetCurrency) {
     } else {
       alert('Failed to fetch country name. Please check the target currency code and try again.');
     }
-  }
-  
 
-  // Function to display a map based on country result
+  
+// Store the used currencies in localStorage
+const usedCurrencies = JSON.parse(localStorage.getItem('usedCurrencies')) || [];
+if (!usedCurrencies.includes(targetCurrency)) {
+  usedCurrencies.push(targetCurrency);
+  localStorage.setItem('usedCurrencies', JSON.stringify(usedCurrencies));
+}
+
+// Display previously used currencies
+const currencyList = document.getElementById('currencyList');
+if (currencyList) {
+  currencyList.innerHTML = '';
+  usedCurrencies.forEach(currency => {
+    const li = document.createElement('li');
+    li.textContent = currency;
+    currencyList.appendChild(li);
+  });
+}
+}
+  
+    
+
+// async function displayMap() {
+//   const countryName = document.getElementById('countryResult').textContent;
+//   const mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx'; // Replace with your MapQuest API key
+//   const mapUrl = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryName}&size=@2x`;
+//   try {
+//       const response = await fetch(mapUrl);
+//       const blob = await response.blob(); // Get the image data as a Blob
+//       const imageUrl = URL.createObjectURL(blob); // Create a URL for the Blob
+//       // Display the map image
+//       const imgMap = document.getElementById('img-map');
+//       imgMap.src = imageUrl;
+//   } catch (error) {
+//       console.error('Error fetching map:', error);
+//   }
+// }
+  
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Add event listener to listen for changes in the countryResult element
+//   document.getElementById('countryResult').addEventListener('DOMSubtreeModified', function() {
+//       displayMap(); // Call the displayMap function whenever countryResult changes
+//   });
+// });
+
+// function displayMap() {
+//   var imgMap = document.getElementById("img-map");
+//   var countryEl = document.getElementById('countryResult').innerText; // Get the text content
+//   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx'; // Replace with your MapQuest API key
+//   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+
+//   // Set the src attribute of the img element to the map URL
+//   imgMap.src = mapURL;
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Select the target node
+//   var countryResult = document.getElementById('countryResult');
+
+//   // Create a new instance of MutationObserver
+//   var observer = new MutationObserver(function(mutations) {
+//       mutations.forEach(function(mutation) {
+//           if (mutation.type === 'childList' || mutation.type === 'characterData') {
+//               displayMap(); // Call the displayMap function whenever countryResult changes
+//           }
+//       });
+//   });
+
+//   // Configuration of the observer:
+//   var config = { childList: true, subtree: true, characterData: true };
+
+//   // Start observing the target node for configured mutations
+//   observer.observe(countryResult, config);
+// });
+
+// function displayMap() {
+//   var imgMap = document.getElementById("img-map");
+//   var countryEl = document.getElementById('countryResult').innerText; // Get the text content
+//   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx'; // Replace with your MapQuest API key
+//   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+
+//   // Set the src attribute of the img element to the map URL
+//   imgMap.src = mapURL;
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Add event listener to the button
+  document.getElementById('mapButton').addEventListener('click', function() {
+      displayMap(); // Call the displayMap function when the button is clicked
+  });
+
+
+  }
+
+  
+});
+
+
+
 function displayMap() {
+  var imgMap = document.getElementById("img-map");
+  var countryEl = document.getElementById('countryResult').innerText; // Get the text content
+  var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx'; // Replace with your MapQuest API key
+  var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryName}&size=@2x`;
+
+
+  // Set the src attribute of the img element to the map URL
+  imgMap.src = mapURL;
 
     // Map display logic
   var countryEl = document.getElementById('countryResult')
@@ -95,9 +199,63 @@ fetch(mapURL)
     mapEl.innerHTML=data
 })
   map.addControl(L.mapquest.control());
+
 }
+
+// Function to display a map based on country result
+// function displayMap() {
+
+//     // Map display logic
+
+// //     So I would have on the html a container (div) that has an enpty img element. Apply an id to it, and then directly target it. Just do a directly pull, not a fetch.  If of the img id="img-map".
+// // something like this:
+// // in js
+
+//   var imgMap = document.getElementById("img-map")
+
+//   var countryEl = document.getElementById('countryResult')
+//   console.log(countryEl);
+//   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+//   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+//   var mapEl = document.getElementById('img-map');
+
+//   fetch(mapURL)
+// .then(function (res) { 
+// return res.json();
+// })
+// .then(function (data) {
+// console.log(data);
+// mapEl.innerHTML=data
+// })
+// map.addControl(L.mapquest.control());
+// }
+
+// function displayMap() {
+//   var imgMap = document.getElementById("img-map");
+//   var countryEl = document.getElementById('countryResult').innerText; // Get the text content
+//   var mapKey = '7kDXGajoCA7GkLUIYeht2GziGKbBtRJx';
+//   var mapURL = `https://www.mapquestapi.com/staticmap/v5/map?key=${mapKey}&center=${countryEl}&size=@2x`;
+
+//   // Set the src attribute of the img element to the map URL
+//   imgMap.src = mapURL;
+// }
+
  
+
+// fetch(mapURL, {cache: 'reload', mode: 'no-cors'})
+// //The following function will update the cache and reload your image everywhere in your page:
+
+// async function reloadImg(imgMap) {
+//   await fetch(mapURL, { cache: 'reload', mode: 'no-cors' })
+//   document.body.querySelectorAll(`img[src='${mapURL}']`)
+//     .forEach(imgMap => imgMap.src = mapURL)
+// }
+
+
+// export async function searchAndConvert() {
+
 // Function to search and convert using geocoding and currency converter APIs
+
   async function searchAndConvert() {
    // Input handling 
   const countryInput = document.getElementById('from-country').value;
